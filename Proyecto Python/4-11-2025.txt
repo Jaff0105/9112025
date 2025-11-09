@@ -1,0 +1,10 @@
+-Titulo: Sugerencia Pamela
+-Descripcion: Sugerencia Pamela
+
+-Mejorar Diseño Fernando
+
+-Modificacion en Login: validacion extra para creacion de usuario tecnico Jonathan
+
+-Fecha en que se creo ticket y finalizacion Alejandra
+
+-Descripcion por parte del tecnico despues de dar cierre al ticket.Alejandra

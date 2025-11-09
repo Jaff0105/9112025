@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Registro de Usuario</h2>
+
+<form method="POST">
+  <label>Usuario</label>
+  <input type="text" name="usuario" required>
+
+  <label>Nombre</label>
+  <input type="text" name="nombre" required>
+
+  <label>Apellido</label>
+  <input type="text" name="apellido" required>
+
+  <label>Email</label>
+  <input type="email" name="email" required>
+
+  <label>Contraseña</label>
+  <input type="password" name="password" required>
+
+  <label>Rol</label>
+  <select name="rol">
+    <option value="usuario">Usuario</option>
+    <option value="admin">Administrador</option>
+  </select>
+
+  <button type="submit">Registrar</button>
+</form>
+
+<p><a href="/login">Volver al inicio de sesión</a></p>
+
+{% if error %}
+  <p style="color:red;">{{ error }}</p>
+{% endif %}
+{% endblock %}

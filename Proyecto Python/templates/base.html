@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>{{ title or "Helpdesk" }}</title>
+  <link href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" rel="stylesheet">
+</head>
+<body class="container">
+  <header style="display:flex;justify-content:space-between;align-items:center;">
+    <h1>🎟️ Helpdesk</h1>
+    {% if session.get('usuario') %}
+      <p>{{ session['usuario'] }} ({{ session['rol'] }}) | <a href="/logout">Cerrar sesión</a></p>
+    {% endif %}
+  </header>
+  <main>{% block content %}{% endblock %}</main>
+</body>
+</html>

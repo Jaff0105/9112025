@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Tickets</h2>
+
+<form method="post" action="/nuevo">
+  <input name="titulo" placeholder="Título" required>
+  <textarea name="descripcion" placeholder="Descripción" required></textarea>
+  <select name="prioridad">
+    <option value="baja">Baja</option>
+    <option value="media" selected>Media</option>
+    <option value="alta">Alta</option>
+  </select>
+  <button>Crear Ticket</button>
+</form>
+
+<hr>
+
+{% if tickets %}
+<table>
+  <thead>
+    <tr>
+      <th>ID</th><th>Título</th><th>Reportado por</th><th>Estado</th><th>Prioridad</th>
+      {% if rol == 'tecnico' %}<th>Acciones</th>{% endif %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for t in tickets %}
+    <tr>
+      <td>{{t['id']}}</td>
+      <td>{{t['titulo']}}</td>
+      <td>{{t['reportado_por']}}</td>
+      <td>{{t['estado']}}</td>
+      <td>{{t['prioridad']}}</td>
+      {% if rol == 'tecnico' %}
+      <td>
+        <form method="post" action="/cambiar_estado/{{t['id']}}" style="display:inline;">
+          <button>{{ 'Reabrir' if t['estado']=='cerrado' else 'Cerrar' }}</button>
+        </form>
+        <form method="post" action="/eliminar/{{t['id']}}" style="display:inline;">
+          <button class="secondary">Eliminar</button>
+        </form>
+      </td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No hay tickets todavía.</p>
+{% endif %}
+{% endblock %}
